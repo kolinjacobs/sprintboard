@@ -4,9 +4,18 @@ import * as fromContainers from './containers';
 
 
 const routes: Routes = [
+  { path: '', redirectTo: 'dashboard' },
   {
-    path: '',
-    component: fromContainers.UiContainerComponent,
+    path: 'dashboard',
+    component: fromContainers.DashboardContainerComponent,
+  },
+  {
+    path: 'backlog',
+    component: fromContainers.BacklogContainerComponent,
+  },
+  {
+    path: 'reports',
+    component: fromContainers.ReportsContainerComponent,
   },
 ];
 

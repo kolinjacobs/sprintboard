@@ -1,0 +1,45 @@
+<div class="reports-conatainer">
+    <h1>reports</h1>
+    <div class="header-container">
+        <h6>Work Items by Date: {{dates[dateSearch] || 'All Time'}}</h6>
+        <div class="serach-options-container">
+            <span>Search by Date</span>
+            <nb-select id="size" placeholder="Select Date" [(selected)]="dateSearch" (selectedChange)="updateDate($event)">
+                <nb-option value="">All Time</nb-option>
+                <nb-option value="1d">1 day ago</nb-option>
+                <nb-option value="1w">1 week ago</nb-option>
+                <nb-option value="2w">2 weeks ago</nb-option>
+                <nb-option value="1m">1 month ago</nb-option>
+            </nb-select>
+        </div>
+    </div>
+    <nb-card>
+        <nb-card-body>
+
+            <table [nbTreeGrid]="source">
+                <tr nbTreeGridHeaderRow *nbTreeGridHeaderRowDef="allColumns"></tr>
+                <tr nbTreeGridRow *nbTreeGridRowDef="let row; columns: allColumns"></tr>
+
+                <ng-container [nbTreeGridColumnDef]="customColumn">
+                    <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{customColumn}}</th>
+                    <td nbTreeGridCell *nbTreeGridCellDef="let row">
+
+                        <nb-tree-grid-row-toggle
+                                [expanded]="row.expanded"
+                                *ngIf="row.data.childEntries">
+                        </nb-tree-grid-row-toggle>
+
+                        {{row.data[customColumn]}}
+
+                    </td>
+                </ng-container>
+
+                <ng-container *ngFor="let column of defaultColumns" [nbTreeGridColumnDef]="column">
+                    <th nbTreeGridHeaderCell *nbTreeGridHeaderCellDef>{{column}}</th>
+                    <td nbTreeGridCell *nbTreeGridCellDef="let row">{{row.data[column] || '-'}}</td>
+                </ng-container>
+            </table>
+
+        </nb-card-body>
+    </nb-card>
+</div>

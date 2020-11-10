@@ -1,0 +1,43 @@
+<div class="work-item-create-container">
+    <h6>{{new ? 'Create' : 'Edit'}} Work Item</h6>
+    <div class="form-group">
+        <label class="input-label" for="title">Title*</label>
+        <input [status]="formValid.title ? 'basic' : 'danger'" id="title" type="text" nbInput fullWidth placeholder="Title" [(ngModel)]="workItem.title">
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="details">Details*</label>
+        <textarea [status]="formValid.details ? 'basic' : 'danger'" nbInput fullWidth id="details" type="text" placeholder="Details" [(ngModel)]="workItem.details">></textarea>
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="size">Size*</label>
+        <nb-select [status]="formValid.size ? 'basic' : 'danger'" id="size" placeholder="Select Size" [(selected)]="workItem.size">
+            <nb-option value="1">1</nb-option>
+            <nb-option value="2">2</nb-option>
+            <nb-option value="3">3</nb-option>
+            <nb-option value="5">5</nb-option>
+            <nb-option value="8">8</nb-option>
+            <nb-option value="13">13</nb-option>
+        </nb-select>
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="priority">Priority*</label>
+        <nb-select [status]="formValid.priority ? 'basic' : 'danger'" id="priority" placeholder="Select Priority" [(selected)]="workItem.priority">
+            <nb-option value="low">low</nb-option>
+            <nb-option value="medium">medium</nb-option>
+            <nb-option value="high">high</nb-option>
+        </nb-select>
+    </div>
+    <div class="form-group">
+        <label class="input-label" for="position">Position*</label>
+        <nb-select [status]="formValid.position ? 'basic' : 'danger'" id="position" placeholder="Select Position" [(selected)]="workItem.position">
+            <nb-option value="backlog">Backlog</nb-option>
+            <nb-option value="todo">To Do</nb-option>
+            <nb-option value="inprogress">In Progress</nb-option>
+            <nb-option value="done">Done</nb-option>
+        </nb-select>
+    </div>
+    <div class="button-container">
+        <button nbButton status="defualt" (click)="close()">Cancel</button>
+        <button nbButton status="primary" (click)="save()">{{new ? 'Create' : 'Edit'}}</button>
+    </div>
+</div>

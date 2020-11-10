@@ -1,0 +1,65 @@
+
+
+<div class="search-container">
+    <nb-icon class="search-icon" icon="search-outline"></nb-icon>
+    <input  [(ngModel)]="searchTerm"
+            placeholder="Search Work Items"
+            type="text"
+            (keyup.enter)="updateSearch()">
+    <nb-icon *ngIf="searchTerm" (click)="searchTerm = ''; updateSearch()" icon="close-outline"></nb-icon>
+</div>
+
+<div class="header">
+    <div class="header-info-container">
+        <h3>Backlog</h3><span>{{backlog.length}} of {{backlogSize}}</span>
+    </div>
+    <button nbButton status="primary" (click)="createWorkItem()">Create</button>
+</div>
+
+<nb-card class="list" size="small">
+    <nb-card-header>
+        Backlog Items
+    </nb-card-header>
+    <nb-list>
+        <nb-list-item *ngFor="let item of backlog">
+            <div class="item">
+                <div class="item-details">
+                    <span><nb-icon [nbTooltip]="'Priority: ' + item.priority" [status]="color[item.priority]" [icon]="icons[item.priority]"></nb-icon>{{ item.title }}<div class="date" [nbTooltip]="'Create On: ' + getDate(item.created)">{{getDate(item.created)}}</div></span>
+                    <p> <span [nbTooltip]="'Size: ' + item.size"  class="badge">{{item.size}}</span> Status: {{ position[item.position] }}</p>
+                </div>
+                <div>
+                    <button nbTooltip="Add To Sprint" nbButton status="success" (click)="updatePosition(item, 'todo')"><nb-icon icon="corner-right-down-outline"></nb-icon></button>
+                    <button nbTooltip="Edit Work Item" nbButton status="primary" (click)="editWorkItem(item)"><nb-icon icon="edit-outline"></nb-icon></button>
+                    <button nbTooltip="Delete Work Item" nbButton status="danger" (click)="deleteWorkItem(item.id)"><nb-icon icon="trash-2-outline"></nb-icon></button>
+                </div>
+            </div>
+        </nb-list-item>
+    </nb-list>
+</nb-card>
+
+<div class="header">
+    <div class="header-info-container">
+        <h3>Current Sprint</h3><span>{{sprint.length}} of {{sprintSize}}</span>
+    </div>
+</div>
+<nb-card class="list" size="small">
+    <nb-card-header>
+        Backlog Items
+    </nb-card-header>
+    <nb-list>
+        <nb-list-item *ngFor="let item of sprint">
+
+            <div class="item">
+                <div class="item-details">
+                    <span><nb-icon [nbTooltip]="'Priority: ' + item.priority" [status]="color[item.priority]" [icon]="icons[item.priority]"></nb-icon>{{ item.title }}<div class="date" [nbTooltip]="'Create On: ' + getDate(item.created)">{{getDate(item.created)}}</div></span>
+                    <p> <span [nbTooltip]="'Size: ' + item.size" class="badge">{{item.size}}</span> Status: {{ position[item.position] }}</p>
+                </div>
+                <div>
+                    <button nbTooltip="Add To Backlog"  nbButton status="success" (click)="updatePosition(item, 'backlog')"><nb-icon icon="corner-right-up-outline"></nb-icon></button>
+                    <button nbTooltip="Edit Work Item" nbButton status="primary" (click)="editWorkItem(item)"><nb-icon icon="edit-outline"></nb-icon></button>
+                    <button nbTooltip="Delete Work Item" nbButton status="danger" (click)="deleteWorkItem(item.id)"><nb-icon icon="trash-2-outline"></nb-icon></button>
+                </div>
+            </div>
+        </nb-list-item>
+    </nb-list>
+</nb-card>

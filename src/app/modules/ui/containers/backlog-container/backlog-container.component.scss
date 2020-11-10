@@ -1,0 +1,93 @@
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .header-info-container {
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: 10px;
+      font-size: 20px;
+    }
+  }
+}
+
+.list {
+  padding: 20px;
+  width: 100%;
+
+  .item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .item-details {
+      span {
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        nb-icon {
+          font-size: 30px;
+          margin-right: 10px;
+        }
+
+        .date {
+          margin-left: 10px;
+          color: #2d2d2d;
+          font-weight: 300;
+        }
+      }
+      p {
+        display: flex;
+      }
+    }
+    button {
+      margin: 10px;
+    }
+
+    .badge {
+      background-color: #afafaf;
+      width: 20px;
+      height: 20px;
+      color: white;
+      text-align: center;
+      display: block !important;
+      border-radius: 10px;
+      font-weight: 300;
+      margin-right: 10px;
+      margin-left: 5px;
+      font-size: 12px;
+    }
+  }
+}
+
+.search-container {
+  input {
+    width: 100%;
+    padding: 10px 10px 10px 40px;
+    box-sizing: border-box;
+    border: 0px;
+    border-radius: 20px;
+    transition: all .25s ease;
+    outline: none;
+  }
+
+  nb-icon {
+    right: 50px;
+    position: absolute;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .search-icon {
+    right: auto;
+    margin-left: 15px;
+    margin-top: 8px;
+    color: #a4a4a4;
+    cursor: auto;
+  }
+}

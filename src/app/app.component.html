@@ -1,16 +1,21 @@
 <nb-layout>
+  <nb-layout-header fixed *ngIf="auth.user | async as user">
+    <div class="menu-container">
+      <nb-action type="rotate-layout"><h1>Sprint Planner</h1></nb-action>
+      <div class="menu-items">
+        <nb-search type="rotate-layout"></nb-search>
+        <nb-action class="user-action" [nbContextMenu]="items"><nb-user [name]="user?.email" title="User"></nb-user></nb-action>
+      </div>
 
-  <nb-layout-header fixed>
-  <!-- Insert header here -->
+    </div>
   </nb-layout-header>
+  <nb-sidebar *ngIf="auth.user | async as user">
+    <nb-menu [items]="menu"></nb-menu>
+  </nb-sidebar>
 
-  <nb-layout-column>
-
+  <nb-layout-column class="colored-column-basic">
     <router-outlet></router-outlet>
   </nb-layout-column>
 
-  <nb-layout-footer fixed>
-  <!-- Insert footer here -->
-  </nb-layout-footer>
 
 </nb-layout>

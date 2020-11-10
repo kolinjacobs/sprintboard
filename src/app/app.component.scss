@@ -1,0 +1,15 @@
+.user-action {
+  padding-left: 15px;
+}
+
+.menu-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  .menu-items {
+    display: flex;
+    align-items: center;
+  }
+}

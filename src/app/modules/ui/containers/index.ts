@@ -1,7 +1,13 @@
-import {UiContainerComponent} from "./ui-container/ui-container.component";
+import {ReportsContainerComponent} from "./reports-container/reports-container.component";
+import {BacklogContainerComponent} from "./backlog-container/backlog-container.component";
+import {DashboardContainerComponent} from "./dashboard-container/dashboard-container.component";
 
 export const containers: any[] = [
-  UiContainerComponent
+  BacklogContainerComponent,
+  DashboardContainerComponent,
+  ReportsContainerComponent
 ];
 
-export * from "./ui-container/ui-container.component";
+export * from "./reports-container/reports-container.component";
+export * from "./backlog-container/backlog-container.component";
+export * from "./dashboard-container/dashboard-container.component";
